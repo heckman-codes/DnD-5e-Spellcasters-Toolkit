@@ -1,6 +1,8 @@
 # Project1
-It's our first group project! look at us go!
 
-Yo, Liam is editing this.
+The D&D 5e Spellcasters tool kit.
 
-Second Edit
+This is a quality-of-life tool for Dungeons and Dragons spellcasters.
+Complete with spell reference tables, dice rolling tool, and spell search features.
+
+view the deployment here: http://group-project.ucd-coding-bootcamp.com/
