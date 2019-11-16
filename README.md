@@ -6,3 +6,5 @@ Complete with spell reference tables, dice rolling tool, and spell search featur
 view the deployment here: http://group-project.ucd-coding-bootcamp.com/
 
 I was responsible for the Front-End design and the Back-End spell list retrieval and displaying that information.
+
+This was intended to be a desktop application.
