@@ -1,4 +1,4 @@
-# Project1
+# README
 
 The D&D 5e Spellcasters tool kit.
 
