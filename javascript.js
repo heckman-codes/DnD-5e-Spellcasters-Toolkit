@@ -24,7 +24,7 @@ $("#class-list").on("click", function (event) {
         for (let i = 0; response.results.length; i++) {
 
             $.ajax({
-                url: response.results[i].url,
+                url: "http://www.dnd5eapi.co" + response.results[i].url,
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
@@ -96,13 +96,13 @@ $("#spell-list").on("click", function (event) {
         for (let i = 0; i < response.results.length; i++) {
 
             $.ajax({
-                url: response.results[i].url,
+                url: "http://www.dnd5eapi.co" + response.results[i].url,
                 method: "GET",
             }).then(function (response) {
                 var tr = $("<tr>");
                 var tdNum = $("<td>").append("<p><strong>" + (i + 1) + "</strong></p>");
-                var tdSpell = $("<td>").text(response.name).addClass("spell-name").attr("data-url", response.url);
-                var tdSchool = $("<td>").text(response.school.name).addClass("school-name").attr("data-url", response.school.url);
+                var tdSpell = $("<td>").text(response.name).addClass("spell-name").attr("data-url", ("http://www.dnd5eapi.co" + response.url));
+                var tdSchool = $("<td>").text(response.school.name).addClass("school-name").attr("data-url", ("http://www.dnd5eapi.co" + response.school.url));
                 console.log(response.name)
 
                 //Holds all the classes for each spell in the table
