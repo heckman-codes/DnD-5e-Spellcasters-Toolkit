@@ -189,10 +189,13 @@
             background-color: gold;
             color: black;
         }
-        .dicetodelete {position: absolute;
-        color: gold;
-        z-index: 100;
-        pointer-events: none;}
+
+        .dicetodelete {
+            position: absolute;
+            color: gold;
+            z-index: 100;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -206,7 +209,7 @@
                     <label for="class-search">Get Spells by</label>
                     <select id="query-selector">
                         <option class="query-option" data-option='spells/'>Class</option>
-                        <option class="query-option" data-option='spells/?name='>Spell Name</option>
+                        <option class="query-option" data-option='spells/'>Spell Name</option>
                     </select>
                     <input type=" text" placeholder="Search Query" id="class-search" />
                     <button type="submit" id="submit-button">Search</button>
@@ -275,7 +278,7 @@
                 </table>
             </div>
         </div>
-    <div id="dice-view"></div>
+        <div id="dice-view"></div>
 
     </div>
     <script src="assets/javascript/app.js"></script>

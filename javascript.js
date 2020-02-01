@@ -152,22 +152,24 @@ $("#submit-button").on("click", function (event) {
         method: "GET"
     }).then(function (response) {
 
-        resultTotal = response.count;
+        console.log(response);
+
+        resultTotal = response.length;
 
         if (resultTotal > 1 || resultTotal < 1) {
             $("#result-count").text("There are " + resultTotal + " spells for: " + (classSearch.toString().charAt(0).toUpperCase() + classSearch.substring(1)).split('+').join(' ')).addClass("result-count");
         } else {
             $("#result-count").text("There is " + resultTotal + " spell for: " + (classSearch.toString().charAt(0).toUpperCase() + classSearch.substring(1)).split('+').join(' ')).addClass("result-count");
         }
-        for (let i = 0; i < response.results.length; i++) {
-            var searchTerm = JSON.stringify(response.results[i].name).trim().split(' ').join('+');
+        for (let i = 0; i < response.length; i++) {
+            var searchTerm = JSON.stringify(response[i].name).trim().split(' ').join('+');
 
             // Will do this ajax call if your search query is for spells specifically
-            if (querytype == "spells/?name=") {
+            if (querytype == "spells/") {
                 if ('"' + classSearch + '"' == searchTerm) {
 
                     $.ajax({
-                        url: response.results[i].url,
+                        url: "http://www.dnd5eapi.co" + response[i].url,
                         method: "GET"
                     }).then(function (response) {
                         // console.log(response);
@@ -220,7 +222,7 @@ $("#submit-button").on("click", function (event) {
                         if ('"' + classSearch + '"' == classes) {
                             var tr = $("<tr>");
                             var tdNum = $("<td>").append("<p><strong>" + (i + 1) + "</strong></p>");
-                            var tdSpell = $("<td>").addClass("spell-name").attr("data-url", response.url);
+                            var tdSpell = $("<td>").addClass("spell-name").attr("data-url", ("http://www.dnd5eapi.co" + response.url));
 
                             //Holds all the classes for each spell in the table
                             var classLoop = [];
