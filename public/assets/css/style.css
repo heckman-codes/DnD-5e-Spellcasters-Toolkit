@@ -1,0 +1,257 @@
+/* This is the Style for the Page */
+
+#wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: gray;
+  background-image: url("../img/dnd_bg.jpg");
+  background-size: 100%;
+}
+
+.spell-name,
+.school-name {
+  cursor: pointer;
+}
+
+.spell-name:hover,
+.school-name:hover {
+  color: gold;
+}
+
+button {
+  background-color: indianred;
+  color: white;
+  font-family: "Stoke", serif;
+  border-style: none;
+  border-bottom: 1px solid white;
+}
+
+input {
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: pink;
+}
+
+#site-title {
+  font-family: "Stoke", serif;
+  color: #ffffff;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+#site-logo {
+  max-width: 100px;
+  margin-right: 20px;
+  float: left;
+}
+
+form {
+  margin-top: 20px;
+}
+
+thead {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+.spell-name {
+  font-family: "Stoke", serif;
+}
+
+label {
+  color: white;
+  font-family: "Stoke", serif;
+}
+
+input::placeholder {
+  font-family: "Stoke", serif;
+}
+
+#wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.spell-name,
+.school-name {
+  cursor: pointer;
+}
+
+.spell-name:hover,
+.school-name:hover {
+  color: gold;
+}
+
+button {
+  background-color: indianred;
+  color: white;
+  font-family: 'Stoke', serif;
+  border-style: none;
+  border-bottom: 1px solid white;
+}
+
+#class-search {
+  color: white;
+  border-style: none;
+  border-bottom: 1px solid white;
+  background: none;
+}
+
+#class-search::placeholder {
+  padding-left: 10px;
+  color: white;
+  font-family: 'Stoke', serif;
+}
+
+
+button:hover {
+  background-color: pink;
+}
+
+#site-title {
+  /* margin-top: 10px; */
+  font-family: 'Stoke', serif;
+  color: #ffffff;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+#site-logo {
+  max-width: 100px;
+  margin-right: 20px;
+  float: left;
+}
+
+form {
+  margin-top: 20px;
+}
+
+thead {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+h1 {
+  font-size: 16px;
+  font-family: 'Stoke', serif;
+  color: white;
+}
+
+p {
+  margin-bottom: 0px;
+  color: white;
+}
+
+.spell-name {
+  font-family: 'Stoke', serif;
+}
+
+.class-name {
+  font-size: 6px;
+}
+
+label {
+  color: white;
+  font-family: 'Stoke', serif;
+}
+
+select {
+  background-color: indianred;
+  color: white;
+  font-family: 'Stoke', serif;
+}
+
+.card {
+  background-color: #292b2c;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: gold;
+  font-family: 'Stoke', serif;
+
+}
+
+hr {
+  background-color: white;
+}
+
+.back-btn {
+  float: right;
+  font-family: Helvetica, sans-serif;
+}
+
+#class-list,
+#spell-list {
+  background: none;
+  border-style: none;
+  margin-left: 10px;
+  float: right;
+}
+
+#class-list,
+#spell-list {
+  float: right;
+}
+
+strong {
+  color: gold;
+}
+
+h6 {
+  color: lightskyblue;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+#dice-display {
+  background-color: #292b2c;
+  border-radius: 5px;
+}
+
+#mod-input,
+#DiceVal-input,
+#DiceNum-input {
+  background: none;
+  color: white;
+  border-style: none;
+  border-bottom: 1px solid white;
+  font-size: 24px;
+  max-width: 100%;
+}
+
+#add-roll {
+  margin: 10px auto;
+  background-color: #292b2c;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+option {
+  color: black;
+}
+
+#add-roll:hover {
+  background-color: gold;
+  color: black;
+}
+
+.dicetodelete {
+  position: absolute;
+  color: gold;
+  z-index: 100;
+  pointer-events: none;
+}

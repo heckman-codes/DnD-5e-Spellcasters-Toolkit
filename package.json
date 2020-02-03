@@ -1,0 +1,28 @@
+{
+  "name": "DnD-5e-Spellcasters-Toolkit",
+  "version": "1.0.0",
+  "description": "This is a quality-of-life tool for Dungeons and Dragons spellcasters. Complete with spell reference tables, dice rolling tool, and spell search features.",
+  "main": "javascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heckman-codes/DnD-5e-Spellcasters-Toolkit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heckman-codes/DnD-5e-Spellcasters-Toolkit/issues"
+  },
+  "homepage": "https://github.com/heckman-codes/DnD-5e-Spellcasters-Toolkit#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "node": "^13.7.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {}
+}
