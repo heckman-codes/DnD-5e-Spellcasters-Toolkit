@@ -16,7 +16,7 @@ $("#class-list").on("click", function (event) {
     $(".search-table").empty();
 
     $.ajax({
-        url: "http://www.dnd5eapi.co/api/classes/",
+        url: "https://www.dnd5eapi.co/api/classes/",
         method: "GET"
     }).then(function (response) {
         console.log(response);
@@ -24,7 +24,7 @@ $("#class-list").on("click", function (event) {
         for (let i = 0; response.results.length; i++) {
 
             $.ajax({
-                url: "http://www.dnd5eapi.co" + response.results[i].url,
+                url: "https://www.dnd5eapi.co" + response.results[i].url,
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
@@ -89,20 +89,20 @@ $("#spell-list").on("click", function (event) {
     $(".search-index").show();
     $(".search-table").empty();
     $.ajax({
-        url: "http://www.dnd5eapi.co/api/spells/",
+        url: "https://www.dnd5eapi.co/api/spells/",
         method: "GET"
     }).then(function (response) {
         console.log(response);
         for (let i = 0; i < response.results.length; i++) {
 
             $.ajax({
-                url: "http://www.dnd5eapi.co" + response.results[i].url,
+                url: "https://www.dnd5eapi.co" + response.results[i].url,
                 method: "GET",
             }).then(function (response) {
                 var tr = $("<tr>");
                 var tdNum = $("<td>").append("<p><strong>" + (i + 1) + "</strong></p>");
-                var tdSpell = $("<td>").text(response.name).addClass("spell-name").attr("data-url", ("http://www.dnd5eapi.co" + response.url));
-                var tdSchool = $("<td>").text(response.school.name).addClass("school-name").attr("data-url", ("http://www.dnd5eapi.co" + response.school.url));
+                var tdSpell = $("<td>").text(response.name).addClass("spell-name").attr("data-url", ("https://www.dnd5eapi.co" + response.url));
+                var tdSchool = $("<td>").text(response.school.name).addClass("school-name").attr("data-url", ("https://www.dnd5eapi.co" + response.school.url));
                 console.log(response.name)
 
                 //Holds all the classes for each spell in the table
@@ -140,7 +140,7 @@ $("#submit-button").on("click", function (event) {
     var resultTotal = 0;
     var classSearch = $("#class-search").val().trim().split(' ').join('+');
     var querytype = $("option:selected").attr("data-option");
-    var queryURL = "http://www.dnd5eapi.co/api/" + querytype + classSearch;
+    var queryURL = "https://www.dnd5eapi.co/api/" + querytype + classSearch;
     var index;
     $("#class-search").val('');
     console.log(querytype);
@@ -169,7 +169,7 @@ $("#submit-button").on("click", function (event) {
                 if ('"' + classSearch + '"' == searchTerm) {
 
                     $.ajax({
-                        url: "http://www.dnd5eapi.co" + response[i].url,
+                        url: "https://www.dnd5eapi.co" + response[i].url,
                         method: "GET"
                     }).then(function (response) {
                         // console.log(response);
@@ -222,7 +222,7 @@ $("#submit-button").on("click", function (event) {
                         if ('"' + classSearch + '"' == classes) {
                             var tr = $("<tr>");
                             var tdNum = $("<td>").append("<p><strong>" + (i + 1) + "</strong></p>");
-                            var tdSpell = $("<td>").addClass("spell-name").attr("data-url", ("http://www.dnd5eapi.co" + response.url));
+                            var tdSpell = $("<td>").addClass("spell-name").attr("data-url", ("https://www.dnd5eapi.co" + response.url));
 
                             //Holds all the classes for each spell in the table
                             var classLoop = [];
