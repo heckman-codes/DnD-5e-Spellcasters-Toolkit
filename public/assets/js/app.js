@@ -86,7 +86,7 @@ $(document).on("click", "#add-roll", function () {
   console.log(DiceValpre);
 
   // var GifFinder = $(this).attr("data-name");
-  var diceQueryURL = "http://roll.diceapi.com/json/" + DiceNum + "d" + DiceVal;
+  var diceQueryURL = "https://roll.diceapi.com/json/" + DiceNum + "d" + DiceVal;
   $.ajax({
     url: diceQueryURL,
     method: "GET"
