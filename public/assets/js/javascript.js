@@ -138,14 +138,25 @@ $("#submit-button").on("click", function (event) {
     $(".search-table").empty();
 
     var resultTotal = 0;
-    var classSearch = $("#class-search").val().trim().split(' ').join('+');
+    var classSearch = $("#class-search").val().trim().split(' ').join('-');
     var querytype = $("option:selected").attr("data-option");
-    var queryURL = "https://www.dnd5eapi.co/api/" + querytype + classSearch;
+    var queryURL;
     var index;
     $("#class-search").val('');
     console.log(querytype);
     console.log(classSearch);
-    console.log(queryURL);
+    // console.log(queryURL);
+
+    if (querytype === "classes/") {
+        queryURL = "https://www.dnd5eapi.co/api/classes/" + classSearch + "/spells";
+        console.log(queryURL);
+    } else if (querytype === "spells/") {
+        queryURL = "https://www.dnd5eapi.co/api/spells/" + classSearch;
+        console.log(queryURL);
+    } else if (classSearch.length) {
+        queryURL = "https://www.dnd5eapi.co/api/spells/";
+        console.log(queryURL);
+    }
 
     $.ajax({
         url: queryURL,
@@ -154,62 +165,60 @@ $("#submit-button").on("click", function (event) {
 
         console.log(response);
 
-        resultTotal = response.length;
+        resultTotal = response.count;
 
-        if (resultTotal > 1 || resultTotal < 1) {
+        if (resultTotal > 1 || resultTotal < 1 || resultTotal == "undefined") {
             $("#result-count").text("There are " + resultTotal + " spells for: " + (classSearch.toString().charAt(0).toUpperCase() + classSearch.substring(1)).split('+').join(' ')).addClass("result-count");
         } else {
-            $("#result-count").text("There is " + resultTotal + " spell for: " + (classSearch.toString().charAt(0).toUpperCase() + classSearch.substring(1)).split('+').join(' ')).addClass("result-count");
+            $("#result-count").text("There is " + 1 + " spell for: " + (classSearch.toString().charAt(0).toUpperCase() + classSearch.substring(1)).split('+').join(' ')).addClass("result-count");
         }
-        for (let i = 0; i < response.length; i++) {
-            var searchTerm = JSON.stringify(response[i].name).trim().split(' ').join('+');
 
-            // Will do this ajax call if your search query is for spells specifically
-            if (querytype == "spells/") {
-                if ('"' + classSearch + '"' == searchTerm) {
+        // Will do this ajax call if your search query is for spells specifically
+        if (querytype == "spells/") {
 
-                    $.ajax({
-                        url: "https://www.dnd5eapi.co" + response[i].url,
-                        method: "GET"
-                    }).then(function (response) {
-                        // console.log(response);
-                        $(".search-index").hide();
-                        var spellDiv = $("<div>").addClass("spell-div card");
-                        var cardBody = $("<div>").addClass("card-body")
-                        // var backButton = $("<button>").addClass("btn btn-warning back-btn").text("X");
-                        var classLoop = [];
-                        response.classes.forEach(element => {
-                            return classLoop.push(element.name);
-                        });
+            $.ajax({
+                url: "https://www.dnd5eapi.co" + response.url,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response.name);
+                $(".search-index").hide();
+                var spellDiv = $("<div>").addClass("spell-div card");
+                var cardBody = $("<div>").addClass("card-body")
+                // var backButton = $("<button>").addClass("btn btn-warning back-btn").text("X");
+                var classLoop = [];
+                response.classes.forEach(element => {
+                    return classLoop.push(element.name);
+                });
 
-                        $("#results-display").append(spellDiv);
-                        $(spellDiv).append(cardBody);
-                        // $(cardBody).append(backButton);
-                        $(cardBody).append("<h2>" + response.name + "</h2>").addClass("card-title");
-                        $(cardBody).append("<hr>");
-                        for (let k = 0; k < response.desc.length; k++) {
-                            $(cardBody).append("<p>" + response.desc[k].toString().replace(/[^\x00-\x7F]/g, "") + "</p><br>");
-                        }
-                        if (response.higher_level) {
-                            $(cardBody).append("<p>" + response.higher_level + "</p>");
-                        }
-                        $(cardBody).append("<p><strong>Range: </strong>" + response.range + "</p>").addClass("card-subtitle mb-2 text-muted");
-                        $(cardBody).append("<p><strong>Components: </strong>" + response.components + "</p>");
-                        $(cardBody).append("<p><strong>Level: </strong>" + response.level);
-                        $(cardBody).append("<p><strong>Ritual: </strong>" + response.ritual + "</p>");
-                        $(cardBody).append("<p><strong> Duration: </strong>" + response.duration + "</p>");
-                        $(cardBody).append("<p><strong>Casting Time: </strong>" + response.casting_time + "</p>");
-                        $(cardBody).append("<br>");
-                        $(cardBody).append("<h6>" + classLoop.join(', ') + "</h6>").addClass("class-results")
-                    });
+                $("#results-display").append(spellDiv);
+                $(spellDiv).append(cardBody);
+                // $(cardBody).append(backButton);
+                $(cardBody).append("<h2>" + response.name + "</h2>").addClass("card-title");
+                $(cardBody).append("<hr>");
+                for (let k = 0; k < response.desc.length; k++) {
+                    $(cardBody).append("<p>" + response.desc[k].toString().replace(/[^\x00-\x7F]/g, "") + "</p><br>");
                 }
+                if (response.higher_level) {
+                    $(cardBody).append("<p>" + response.higher_level + "</p>");
+                }
+                $(cardBody).append("<p><strong>Range: </strong>" + response.range + "</p>").addClass("card-subtitle mb-2 text-muted");
+                $(cardBody).append("<p><strong>Components: </strong>" + response.components + "</p>");
+                $(cardBody).append("<p><strong>Level: </strong>" + response.level);
+                $(cardBody).append("<p><strong>Ritual: </strong>" + response.ritual + "</p>");
+                $(cardBody).append("<p><strong> Duration: </strong>" + response.duration + "</p>");
+                $(cardBody).append("<p><strong>Casting Time: </strong>" + response.casting_time + "</p>");
+                $(cardBody).append("<br>");
+                $(cardBody).append("<h6>" + classLoop.join(', ') + "</h6>").addClass("class-results")
+            });
 
-                return;
+            return;
 
-            } else {
+        } else {
+            for (let i = 0; i < response.results.length; i++) {
+                var searchTerm = JSON.stringify(response || response.results[i].name).trim().split(' ').join('+');
                 //AJAX calls for spells based on class search
                 $.ajax({
-                    url: response.results[i].url,
+                    url: "https://www.dnd5eapi.co" + response.results[i].url,
                     method: "GET"
                 }).then(function (response) {
                     // console.log(response.name);
