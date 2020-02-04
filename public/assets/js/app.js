@@ -1,4 +1,4 @@
-$(document).on("click", "#add-roll", function() {
+$(document).on("click", "#add-roll", function () {
   event.preventDefault();
   // console.log($(window).height());
 
@@ -22,8 +22,8 @@ $(document).on("click", "#add-roll", function() {
     console.log("back: " + crazy_xback);
     $("#wrapper").prepend(
       "<i class='fas fa-dice-d20 fa-3x dicetodelete' id='rollingdice" +
-        i +
-        "'></i> "
+      i +
+      "'></i> "
     );
     // if (crazy_xback < 0) {
     //   let rolldicebaby = anime({
@@ -90,7 +90,7 @@ $(document).on("click", "#add-roll", function() {
   $.ajax({
     url: diceQueryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     $("#rolls-view").empty();
     // $("#rolls-view").append("<p><strong> Total: </strong>" + total + "</p>");
@@ -122,10 +122,10 @@ $(document).on("click", "#add-roll", function() {
     }
     $("#rolls-view").prepend(
       "<p><strong>Modifier: </strong>" +
-        mod +
-        " | <strong> Total: </strong>" +
-        total +
-        "</p><br>"
+      mod +
+      " | <strong> Total: </strong>" +
+      total +
+      "</p><br>"
     );
     $("#rolls-view").prepend("<h1>Roll Results: </h1>");
   });
